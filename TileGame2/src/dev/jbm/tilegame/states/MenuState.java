@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import dev.jbm.tilegame.Handler;
 import dev.jbm.tilegame.gfx.Assets;
 import dev.jbm.tilegame.ui.ClickListener;
+import dev.jbm.tilegame.ui.UIImage;
 import dev.jbm.tilegame.ui.UIImageButton;
 import dev.jbm.tilegame.ui.UIManager;
 
@@ -23,6 +24,7 @@ public class MenuState extends State{
 				State.setState(handler.getGame().gameState);
 			}
 			}));
+		uiManager.addObject(new UIImage(100f, 100f, 296, 64, Assets.title));
 	}
 	
 	public void tick() {

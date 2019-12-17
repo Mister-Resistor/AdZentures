@@ -9,7 +9,7 @@ import dev.jbm.tilegame.tile.Tile;
 public class Fence extends StaticEntity{
 
 	public Fence(Handler handler, float x, float y) {
-		super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
+		super(handler, x, y, 24, Tile.TILEHEIGHT);
 	}
 
 	@Override

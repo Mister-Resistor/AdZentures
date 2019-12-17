@@ -33,6 +33,7 @@ public class Player extends Creature {
 		move();
 		handler.getGameCamera().centerOnEntity(this);
 		canFall();
+		System.out.println(yMove);
 	}
 	
 	public void die() {

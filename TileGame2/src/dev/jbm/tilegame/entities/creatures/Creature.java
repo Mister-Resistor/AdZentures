@@ -25,6 +25,10 @@ public abstract class Creature extends Entity {
 	public void move(){
 		if(!checkEntityCollisions(xMove, 0f))
 			moveX();
+		if(checkEntityCollisions(0f, yMove)) {
+			canJump = true;
+			yMove = 1;
+		}
 		if(!checkEntityCollisions(0f, yMove)) {
 			moveY();
 			checkGravity();
@@ -74,8 +78,6 @@ public abstract class Creature extends Entity {
 			
 			if(!collisionWithTile((int) (x+bounds.x) /Tile.TILEHEIGHT, ty) &&
 					!collisionWithTile((int) (x+bounds.x + bounds.width) /Tile.TILEHEIGHT, ty)){
-				//if(canJump)
-				//	yMove = DEFAULT_FALLING_SPEED;
 				y+=yMove;
 				canJump = false;
 			}else{
@@ -83,7 +85,6 @@ public abstract class Creature extends Entity {
 				yMove = 1;
 				canJump = true;
 			}
-			System.out.println(canJump);
 		}
 	}
 	
