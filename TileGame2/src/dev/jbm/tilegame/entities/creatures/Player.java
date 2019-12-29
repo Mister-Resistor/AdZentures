@@ -1,6 +1,6 @@
 package dev.jbm.tilegame.entities.creatures;
 
-//import java.awt.Color;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -14,10 +14,10 @@ public class Player extends Creature {
 	
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
-		bounds.x = 10;
-		bounds.y = 18;
-		bounds.width = 47;
-		bounds.height = 45;
+		bounds.x = 5;
+		bounds.y = 9;
+		bounds.width = 23;
+		bounds.height = 20;
 		
 		//Animations
 		animRight = new Animation(100, Assets.player_right);
@@ -33,7 +33,6 @@ public class Player extends Creature {
 		move();
 		handler.getGameCamera().centerOnEntity(this);
 		canFall();
-		System.out.println(yMove);
 	}
 	
 	public void die() {

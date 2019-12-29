@@ -8,8 +8,8 @@ public abstract class Creature extends Entity {
 	
 	public static final float DEFAULT_SPEED = 3.0f,
 			DEFAULT_FALLING_SPEED = 0.5f;
-	public static final int DEFAULT_CREATURE_WIDTH = 72,
-							DEFAULT_CREATURE_HEIGHT = 64;
+	public static final int DEFAULT_CREATURE_WIDTH = 36,
+							DEFAULT_CREATURE_HEIGHT = 32;
 	
 	protected float speed;
 	protected float xMove, yMove;
@@ -38,7 +38,7 @@ public abstract class Creature extends Entity {
 	//Collision detection going...
 	
 	public void moveX() {
-		if (xMove > 0) {//right
+		if (xMove > 0) {//right 
 			int tx = (int) (x + xMove+bounds.x+bounds.width) / Tile.TILEWIDTH;
 			
 			if(!collisionWithTile(tx, (int) (y+bounds.y) /Tile.TILEHEIGHT) &&
@@ -68,6 +68,7 @@ public abstract class Creature extends Entity {
 				y+=yMove;
 			}else {
 				y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
+				yMove = 1;
 			}
 		}
 	}
@@ -87,6 +88,8 @@ public abstract class Creature extends Entity {
 			}
 		}
 	}
+	
+	public abstract void canFall();
 	
 	protected boolean collisionWithTile(int x, int y) {
 		return handler.getWorld().getTile(x,y).isSolid();

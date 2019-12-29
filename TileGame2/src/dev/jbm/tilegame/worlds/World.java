@@ -1,6 +1,7 @@
 package dev.jbm.tilegame.worlds;
 
 import java.awt.Graphics;
+import java.util.Random;
 
 import dev.jbm.tilegame.Handler;
 import dev.jbm.tilegame.entities.EntityManager;
@@ -26,7 +27,8 @@ public class World {
 		entityManager.addEntity(new Fence(handler, 0, 128));
 		entityManager.addEntity(new Sign(handler, 200, 128));
 		
-		loadWorld(path);
+		//loadHardcodedWorld(path);
+		loadRandomWorld();
 		
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
@@ -66,7 +68,7 @@ public class World {
 		return t;
 	}
 	
-	private void loadWorld(String path){
+	private void loadHardcodedWorld(String path){
 		String file = Utils.loadFileAsString(path);
 		String[] tokens = file.split("\\s+");
 		width = Utils.parseInt(tokens[0]);
@@ -78,6 +80,56 @@ public class World {
 		for(int y = 0;y < height;y++){
 			for(int x = 0;x < width;x++){
 				tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 4]);
+			}
+		}
+	}
+	
+	private void loadRandomWorld() {
+		Random r = new Random();
+		int index = 0;
+		width = 20;
+		height = 20;
+		spawnX = 100;
+		spawnY = 510;
+		
+		tiles = new int[width][height];
+		for(int y = 0;y < height;y++){
+			for(int x = 0;x < width;x++){
+				index = r.nextInt(100);
+				if(index == 9)
+					createIsland(x,y);
+				else if(index == 8)
+					tiles[x][y] = 0;
+				else
+					tiles[x][y] = 3;
+			}
+		}
+		
+		for(int x = 0; x < width; x++) {
+			tiles[x][height - 1] = 1;
+		}
+		for(int x = 0; x < width; x++) {
+			tiles[x][height - 2] = 3;
+		}
+	}
+	
+	private void createIsland(int x, int y) {
+		int isleWidth = (int) ((Math.random() * ((5 - 2) + 1)) + 2);
+		int isleHeight = (int) ((Math.random() * ((5 - 2) + 1)) + 2);
+		for(int i = 0; i <= isleWidth; i++) {
+			if((x-i) >= 0 && (x-i) < width) {
+				tiles[x-i][y] = 2;
+			}
+			if((y - isleHeight) > 1 && (y - isleHeight) < height && (x-i) >= 0 && (x-i) < width) {
+				tiles[x-i][y - isleHeight] = 0;
+			}
+		}
+		for(int i = 1; i < isleHeight; i++) {
+			if((y - i) > 1 && (y - i) < height) {
+				tiles[x][y-i] = 2;
+			}
+			if((x-isleWidth) > 0 && (x-isleWidth) < width && (y - i) > 1 && (y - i) < height) {
+				tiles[x-isleWidth][y-i] = 2;
 			}
 		}
 	}

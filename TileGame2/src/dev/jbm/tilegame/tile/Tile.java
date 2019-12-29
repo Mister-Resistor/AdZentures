@@ -10,10 +10,10 @@ public class Tile {
 	public static Tile rockTile = new RockTile(1);
 	public static Tile dirtTile = new DirtTile(2);
 	public static Tile airTile = new AirTile(3);
-	public static Tile nullTile = new AirTile(200);
+	public static Tile nullTile = new NullTile(200);
 	
-	public static final int TILEWIDTH = 64;
-	public static final int TILEHEIGHT = 64;
+	public static final int TILEWIDTH = 32;
+	public static final int TILEHEIGHT = 32;
 	
 	protected final int id;
 	protected BufferedImage texture;

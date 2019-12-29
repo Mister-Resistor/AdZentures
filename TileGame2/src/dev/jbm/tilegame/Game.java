@@ -1,5 +1,6 @@
 package dev.jbm.tilegame;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import dev.jbm.tilegame.states.GameState;
@@ -83,6 +84,8 @@ public class Game implements Runnable {
 		g = bs.getDrawGraphics();
 		g.clearRect(0, 0, width, height);
 		//put stuff on screen
+		g.setColor(Color.blue);
+		g.fillRect(0, 0, width, height);
 		
 		if(gameState != null)
 			State.getState().render(g);
