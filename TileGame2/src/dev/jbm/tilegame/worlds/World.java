@@ -6,7 +6,9 @@ import java.util.Random;
 import dev.jbm.tilegame.Handler;
 import dev.jbm.tilegame.entities.EntityManager;
 import dev.jbm.tilegame.entities.creatures.Player;
+import dev.jbm.tilegame.entities.statics.Crystal;
 import dev.jbm.tilegame.entities.statics.Fence;
+import dev.jbm.tilegame.entities.statics.Grass;
 import dev.jbm.tilegame.entities.statics.Sign;
 import dev.jbm.tilegame.tile.Tile;
 import dev.jbm.tilegame.utils.Utils;
@@ -24,11 +26,13 @@ public class World {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
 		//Put entities here
-		entityManager.addEntity(new Fence(handler, 0, 128));
-		entityManager.addEntity(new Sign(handler, 200, 128));
+		entityManager.addEntity(new Fence(handler, 5, 1216));
+		entityManager.addEntity(new Sign(handler, 160, 162, "hello"));
+		entityManager.addEntity(new Grass(handler, 200, 1216, 1));
+		entityManager.addEntity(new Crystal(handler, 50, 1216));
 		
-		//loadHardcodedWorld(path);
-		loadRandomWorld();
+		loadWorldFromText(path);
+		//loadRandomWorld();
 		
 		entityManager.getPlayer().setX(spawnX);
 		entityManager.getPlayer().setY(spawnY);
@@ -52,7 +56,8 @@ public class World {
 		for(int y = yStart;y < yEnd;y++){
 			for(int x = xStart;x < xEnd;x++){
 				getTile(x, y).render(g, (int)(x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()),
-						(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
+						(int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()), getTile(x,y).getWidth(),
+						getTile(x,y).getHeight());
 			}
 		}
 		//Entities
@@ -68,7 +73,7 @@ public class World {
 		return t;
 	}
 	
-	private void loadHardcodedWorld(String path){
+	private void loadWorldFromText(String path){
 		String file = Utils.loadFileAsString(path);
 		String[] tokens = file.split("\\s+");
 		width = Utils.parseInt(tokens[0]);
@@ -88,9 +93,9 @@ public class World {
 		Random r = new Random();
 		int index = 0;
 		width = 20;
-		height = 20;
+		height = 40;
 		spawnX = 100;
-		spawnY = 510;
+		spawnY = 1216;
 		
 		tiles = new int[width][height];
 		for(int y = 0;y < height;y++){
@@ -107,10 +112,14 @@ public class World {
 		
 		for(int x = 0; x < width; x++) {
 			tiles[x][height - 1] = 1;
-		}
-		for(int x = 0; x < width; x++) {
 			tiles[x][height - 2] = 3;
 		}
+		for(int y = 0; y < height; y++) {
+			for(int x = 0; x > width; x++) {
+				//if()
+			}
+		}
+		
 	}
 	
 	private void createIsland(int x, int y) {

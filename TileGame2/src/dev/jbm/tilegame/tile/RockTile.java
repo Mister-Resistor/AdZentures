@@ -5,12 +5,6 @@ import dev.jbm.tilegame.gfx.Assets;
 public class RockTile extends Tile{
 
 	public RockTile(int id) {
-		super(Assets.stone, id);
+		super(Assets.stone, id, TILEWIDTH, TILEHEIGHT);
 	}
-	
-	@Override
-	public boolean isSolid() {
-		return true;
-	}
-
 }

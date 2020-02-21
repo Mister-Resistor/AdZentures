@@ -5,7 +5,7 @@ import dev.jbm.tilegame.gfx.Assets;
 public class NullTile extends Tile{
 
 	public NullTile(int id) {
-		super(Assets.null_, id);
+		super(Assets.null_, id, TILEWIDTH, TILEHEIGHT);
 		
 	}
 	

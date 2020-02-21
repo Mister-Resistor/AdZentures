@@ -7,8 +7,7 @@ public class KeyManager implements KeyListener{
 
 	private boolean[] keys;
 	private int lastPressedKey;
-	public boolean up,down,left,right;
-	public boolean attack;
+	public boolean up,down,left,right, interact;
 	
 	public KeyManager() {
 		keys = new boolean[256];
@@ -20,7 +19,7 @@ public class KeyManager implements KeyListener{
 		left = keys[KeyEvent.VK_A];
 		right = keys[KeyEvent.VK_D];
 		setLastPressed();
-		attack = keys[KeyEvent.VK_SPACE];
+		interact = keys[KeyEvent.VK_SPACE];
 	}
 	
 	public void setLastPressed() {
@@ -39,7 +38,7 @@ public class KeyManager implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		keys[e.getKeyCode()] = true;
-		System.out.println("pressed");
+		//System.out.println("pressed");
 	}
 
 	@Override

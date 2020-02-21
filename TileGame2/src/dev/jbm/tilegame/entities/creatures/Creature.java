@@ -2,6 +2,7 @@ package dev.jbm.tilegame.entities.creatures;
 
 import dev.jbm.tilegame.Handler;
 import dev.jbm.tilegame.entities.Entity;
+import dev.jbm.tilegame.tile.BouncerTile;
 import dev.jbm.tilegame.tile.Tile;
 
 public abstract class Creature extends Entity {
@@ -82,9 +83,15 @@ public abstract class Creature extends Entity {
 				y+=yMove;
 				canJump = false;
 			}else{
-				y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height - 1;
-				yMove = 1;
-				canJump = true;
+				if(handler.getWorld().getTile((int) (x+bounds.x) /Tile.TILEHEIGHT, ty) == Tile.bouncerTile) {
+					yMove = -20;
+					handler.getWorld().getTile((int) (x+bounds.x) /Tile.TILEHEIGHT, ty).bounce();
+				}
+				else {
+					y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height - 1;
+					yMove = 1;
+					canJump = true;
+				}
 			}
 		}
 	}

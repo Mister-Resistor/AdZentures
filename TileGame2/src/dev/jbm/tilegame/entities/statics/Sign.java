@@ -5,12 +5,15 @@ import java.awt.Graphics;
 import dev.jbm.tilegame.Handler;
 import dev.jbm.tilegame.gfx.Assets;
 import dev.jbm.tilegame.tile.Tile;
+import dev.jbm.tilegame.ui.UIText;
 
 public class Sign extends StaticEntity{
-
-	public Sign(Handler handler, float x, float y) {
+	
+	private String message;
+	
+	public Sign(Handler handler, float x, float y, String message) {
 		super(handler, x, y, Tile.TILEWIDTH, Tile.TILEHEIGHT);
-		
+		this.message = message;
 	}
 
 	@Override
@@ -27,5 +30,21 @@ public class Sign extends StaticEntity{
 	public void die() {
 		
 	}
+	
+	@Override
+	public boolean isSolid() {
+		return false;
+	}
 
+	public String getMessage() {
+		return message;
+	}
+	
+	public int getType() {
+		return 4;
+	}
+	
+	public void interact() {
+		uiManager.addObject(new UIText(100f, 200f, message));
+	}
 }

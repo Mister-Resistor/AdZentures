@@ -8,6 +8,7 @@ import dev.jbm.tilegame.ui.ClickListener;
 import dev.jbm.tilegame.ui.UIImage;
 import dev.jbm.tilegame.ui.UIImageButton;
 import dev.jbm.tilegame.ui.UIManager;
+import dev.jbm.tilegame.ui.UIText;
 
 public class MenuState extends State{
 
@@ -23,8 +24,9 @@ public class MenuState extends State{
 				handler.getMouseManager().setUIManager(null);
 				State.setState(handler.getGame().gameState);
 			}
-			}));
+		}));
 		uiManager.addObject(new UIImage(100f, 100f, 296, 64, Assets.title));
+		uiManager.addObject(new UIText(100f, 200f, "reet"));
 	}
 	
 	public void tick() {

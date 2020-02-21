@@ -6,9 +6,9 @@ import dev.jbm.tilegame.Handler;
 import dev.jbm.tilegame.gfx.Assets;
 import dev.jbm.tilegame.tile.Tile;
 
-public class Fence extends StaticEntity{
+public class Crystal extends StaticEntity{
 
-	public Fence(Handler handler, float x, float y) {
+	public Crystal(Handler handler, float x, float y) {
 		super(handler, x, y, 12, Tile.TILEHEIGHT);
 	}
 
@@ -23,15 +23,15 @@ public class Fence extends StaticEntity{
 	
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.fence, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
+		g.drawImage(Assets.crystal, (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
 	}
 	
 	public boolean isSolid() {
 		return true;
 	}
-
+	
 	public int getType() {
-		return 2;
+		return 1;
 	}
 
 	@Override
