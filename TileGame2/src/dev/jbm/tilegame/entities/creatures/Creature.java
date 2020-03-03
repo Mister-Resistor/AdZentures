@@ -85,7 +85,7 @@ public abstract class Creature extends Entity {
 			}else{
 				if(handler.getWorld().getTile((int) (x+bounds.x) /Tile.TILEHEIGHT, ty) == Tile.bouncerTile) {
 					yMove = -20;
-					handler.getWorld().getTile((int) (x+bounds.x) /Tile.TILEHEIGHT, ty).bounce();
+					handler.getWorld().getTile((int) (x+bounds.x) /Tile.TILEHEIGHT, ty).interact();
 				}
 				else {
 					y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height - 1;

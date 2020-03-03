@@ -29,10 +29,6 @@ public class Crystal extends StaticEntity{
 	public boolean isSolid() {
 		return true;
 	}
-	
-	public int getType() {
-		return 1;
-	}
 
 	@Override
 	public void interact() {

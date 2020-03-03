@@ -30,10 +30,6 @@ public class Fence extends StaticEntity{
 		return true;
 	}
 
-	public int getType() {
-		return 2;
-	}
-
 	@Override
 	public void interact() {
 		// TODO Auto-generated method stub

@@ -20,7 +20,7 @@ public abstract class Entity {
 
 	protected Rectangle bounds; //hitbox
 
-	public UIManager uiManager;
+	protected UIManager uiManager;
 	
 	public Entity(Handler handler, float x, float y, int width, int height){
 		this.handler = handler;
@@ -38,7 +38,7 @@ public abstract class Entity {
 	
 	public abstract void die();
 	
-	public abstract int getType();
+	//public abstract int getType(); -- unused
 	
 	public abstract void interact();
 	
@@ -65,18 +65,31 @@ public abstract class Entity {
 		return new Rectangle((int) (x + bounds.x +xOffset), (int) (y + bounds.y + yOffset), bounds.width, bounds.height);
 	}
 	
+	public Entity getCollisionEntity(float xOffset, float yOffset){
+		for(Entity e : handler.getWorld().getEntityManager().getEntities()) {
+			if(e.equals(this))
+				continue;
+			if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))){
+				return e; 
+			}
+		}
+		return null;
+	}
+	
+	//Unused method, might use later though
+	/**
 	public boolean getCollisionType(float xOffset, float yOffset, int type) {
 		for(Entity e : handler.getWorld().getEntityManager().getEntities()) {
 			if(e.getCollisionBounds(0f, 0f).intersects(getCollisionBounds(xOffset, yOffset))){
 				if(e.getType() == type) {
-					
+					e.interact();
 					return true;
 				}
 			}
 		}
 		return false;
 	}
- 
+    **/
 	
 	
 	public float getX() {

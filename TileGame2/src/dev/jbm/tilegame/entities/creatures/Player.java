@@ -56,8 +56,8 @@ public class Player extends Creature {
 			xMove = -speed;
 		if(handler.getKeyManager().right)
 			xMove = speed;
-		if(handler.getKeyManager().interact && getCollisionType(0f,0f,4)) {
-			System.out.println("sign");
+		if(handler.getKeyManager().interact) { //unused - maybe later
+			interact();
 		}
 			
 	}
@@ -90,10 +90,6 @@ public class Player extends Creature {
 		}
 		//to add jumping anim, add else if (ymove > 0) or whatever
 	}
-	
-	public int getType() {
-		return 0;
-	}
 
 	public int getUpgradePoints() {
 		return upgradePoints;
@@ -105,8 +101,8 @@ public class Player extends Creature {
 
 	@Override
 	public void interact() {
-		// TODO Auto-generated method stub
-		
+		if(getCollisionEntity(0f, 0f) != null)
+			getCollisionEntity(0f, 0f).interact();
 	}
 	
 }

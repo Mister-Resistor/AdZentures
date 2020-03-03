@@ -65,7 +65,7 @@ public class Assets {
 		grass = sheet.crop(width*3, 0, width, height);
 		dirt = sheet.crop(width*4, 0, width, height);
 		stone = sheet.crop(width*5, 0, width, height);
-		air = sheet.crop(0, height, width, height);
+		air = sheet.crop(width*10, height*2, width, height);
 		null_ = sheet.crop(0,0,width,height);
 		fence = sheet.crop(width*2 +20, 0, 24, height);
 		sign = sheet.crop(width, 0, width, height);

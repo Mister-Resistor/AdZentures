@@ -26,7 +26,7 @@ public class MenuState extends State{
 			}
 		}));
 		uiManager.addObject(new UIImage(100f, 100f, 296, 64, Assets.title));
-		uiManager.addObject(new UIText(100f, 200f, "reet"));
+		uiManager.addObject(new UIText(100f, 200f, "test"));
 	}
 	
 	public void tick() {

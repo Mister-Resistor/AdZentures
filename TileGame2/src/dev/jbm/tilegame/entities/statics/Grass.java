@@ -37,10 +37,6 @@ public class Grass extends StaticEntity{
 		return false;
 	}
 	
-	public int getType() {
-		return 3;
-	}
-
 	@Override
 	public void interact() {
 		// TODO Auto-generated method stub

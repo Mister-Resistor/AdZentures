@@ -27,7 +27,7 @@ public class World {
 		entityManager = new EntityManager(handler, new Player(handler, 100, 100));
 		//Put entities here
 		entityManager.addEntity(new Fence(handler, 5, 1216));
-		entityManager.addEntity(new Sign(handler, 160, 162, "hello"));
+		entityManager.addEntity(new Sign(handler, 128, 162, "hello"));
 		entityManager.addEntity(new Grass(handler, 200, 1216, 1));
 		entityManager.addEntity(new Crystal(handler, 50, 1216));
 		
